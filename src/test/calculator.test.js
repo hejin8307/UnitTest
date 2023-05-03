@@ -23,10 +23,18 @@ describe('calculator', () => {
     expect(cal.value).toBe(0);
   });
 
-  it('adds', () => {
-    cal.set(1);
-    cal.add(2);
-    expect(cal.value).toBe(3);
+  describe('adds', () => {
+    it('add should throw an error if value is greater than 100', () => {
+      expect(() => {
+        cal.add(101);
+      }).toThrow('Value can not be greater than 100');
+    });
+
+    it('1 + 2 === 3', () => {
+      cal.set(1);
+      cal.add(2);
+      expect(cal.value).toBe(3);
+    });
   });
 
   it('subtracts', () => {
